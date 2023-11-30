@@ -57,6 +57,7 @@ def calculette():
     input_effacer_historique = input ("Voulez-vous supprimer cet historique ? (oui/non)")
     if input_effacer_historique == "oui":
         effacer_historique()
+        calculette()
     else:
         calculette()
 
@@ -65,4 +66,3 @@ def effacer_historique():
     historique.clear()
 
 calculette()
-
