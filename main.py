@@ -1,28 +1,48 @@
-# Liste pour stocker les nombres et l'historique des opérations
+# Listes pour stocker les nombres et l'historique des opérations
 nombres = []
 historique = []
 
 # Fonction pour saisir les nombres et les opérateurs
 def data():
-    # Saisir le premier nombre
-    a = input("Entrez un nombre : ")
+    # Saisir le premier nombre, en vérifiant qu'il est bien valide
+    while True:
+        try:
+            a = float(input("Entrez un nombre : "))
+            break
+        except ValueError:
+            print ("Veuillez entrer un nombre valide.")
+
     nombres.append(a)
     historique.append(a)
 
-    # Saisir les nombres ou opérateurs jusqu'à ce que "=" soit entré
+    # Saisir les nombres ou opérateurs, toujours avec vérification jusqu'à ce que "=" soit entré
     while True:
         a = input("Entrez un nombre ou un opérateur : ")
-        nombres.append(a)
-        historique.append(a)
+
         if a == "=":
+            nombres.append(a)
+            historique.append(a)
             return nombres
+
+        try:
+            a = float(a)
+            nombres.append(a)
+            historique.append(a)
+        except ValueError:
+            if a in ['+', '-', '*', '/']:
+                nombres.append(a)
+                historique.append(a)
+            else:
+                print("Entrez un nombre valide ou utilisez '+', '-', '*', '/' pour les opérations.")
+
+
 
 # Fonction principale pour effectuer les calculs
 def calculette():
     # Appeler la fonction pour saisir les données
     data()
 
-    # Première boucle pour traiter les multiplications et divisions
+    # Première boucle pour traiter les multiplications et divisions en premier
     i = 1
     while i < len(nombres):
         if nombres[i] == "*":
