@@ -4,7 +4,7 @@ historique = []
 
 # Fonction pour saisir les nombres et les opérateurs
 def data():
-    # Saisir le premier nombre, en vérifiant qu'il est bien valide
+    # Saisit le premier nombre, en vérifiant qu'il est bien valide
     while True:
         try:
             a = float(input("Entrez un nombre : "))
@@ -15,9 +15,9 @@ def data():
     nombres.append(a)
     historique.append(a)
 
-    # Saisir les nombres ou opérateurs, toujours avec vérification jusqu'à ce que "=" soit entré
+    # Saisit les nombres ou opérateurs, toujours avec vérification jusqu'à ce que "=" soit entré
     while True:
-        a = input("Entrez un nombre ou un opérateur : ")
+        a = input("Entrez un nombre ou un opérateur (Entrez '=' pour obtenir le résultat) : ")
 
         if a == "=":
             nombres.append(a)
@@ -39,7 +39,7 @@ def data():
 
 # Fonction principale pour effectuer les calculs
 def calculette():
-    # Appeler la fonction pour saisir les données
+    # Appele la fonction pour saisir les données
     data()
 
     # Première boucle pour traiter les multiplications et divisions en premier
@@ -72,19 +72,19 @@ def calculette():
         else:
             i += 1
 
-    # Afficher le résultat, ajouter le résultat à l'historique et nettoyer la liste nombres
+    # Affiche le résultat, ajoute le résultat à l'historique et nettoie la liste nombres pour les prochains calculs
     print(float(nombres[0]))
     historique.append(float(nombres[0]))
     nombres.clear()
 
-    # Demander à l'utilisateur s'il veut afficher l'historique
+    # Demande à l'utilisateur si il veut afficher l'historique
     afficher_historique = input("Voulez-vous afficher l'historique ? (oui/non)")
     if afficher_historique == "oui":
         print(historique)
     else:
         calculette()
 
-    # Demander à l'utilisateur s'il veut effacer l'historique
+    # Demande à l'utilisateur si il veut effacer l'historique
     input_effacer_historique = input("Voulez-vous supprimer cet historique ? (oui/non)")
     if input_effacer_historique == "oui":
         effacer_historique()
@@ -96,5 +96,5 @@ def calculette():
 def effacer_historique():
     historique.clear()
 
-# Appeler la fonction principale pour démarrer la calculatrice
+# Appele la fonction principale pour démarrer la calculatrice
 calculette()
